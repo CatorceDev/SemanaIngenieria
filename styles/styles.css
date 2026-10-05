@@ -1,0 +1,167 @@
+:root{
+    --color-primary: #ededed;
+    --color-font: #000;
+    --color-font-secondary: #333;
+    --color-font-hover: #18496b;
+    --color-font-contrast: #0baee9;
+    --font-family-primary: 'Quicksand', sans-serif;
+    --font-family-secondary: 'Space Grotesk', sans-serif;
+    --font-family-tertiary: 'Saira Stencil', sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--color-primary);
+    height: 200vh;
+}
+
+header{
+    background-color: var(--color-primary);
+    height: 13vh;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px ;
+    z-index: 1000;
+}
+
+.header--logo{
+    
+    height: 100%;
+}
+
+.header--logo a{
+    height: 100%;
+    display: inline-block;
+}
+
+.header--logo a img{
+    height: 100%;
+}
+
+.header--links{
+
+}
+
+.header--links ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.header--links ul li{
+
+}
+
+.header--links ul li a{
+    color: var(--color-font-secondary);
+    text-decoration: none;
+    font-weight: 400;
+    position: relative;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.header--links ul li a::before{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-font-hover);
+    transition: width 0.3s ease;
+}
+
+.header--links ul li a:hover::before{
+    width: 100%;
+}
+
+.header--links ul li a:hover{
+    color: var(--color-font-hover);
+    font-weight: 500;
+}
+
+#hero{
+    height: 100vh;
+    width: 100%;
+    background-image: url("/assests/images/fes-aragon.jpg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#hero::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(8, 40, 66, 0.293);
+}
+
+#hero .hero--container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 600px;
+}
+
+
+#hero .hero--container .hero--welcome p{
+    text-align: center;
+}
+
+#hero .hero--container .hero--welcome p strong{
+    font-family: var(--font-family-secondary);
+    color: #fff;
+    font-size: 4rem;
+}
+
+
+#hero .hero--container .hero--welcome p strong .hero--welcome-blue{
+    color: var(--color-font-contrast);
+    text-shadow: 0px 0px 4px #000;
+}
+
+.faculty{
+    width: 100%;
+}
+
+.faculty p{
+    color: #fff;
+    font-weight: 200;
+    text-align: center;
+    
+}
+
+.hero--description{
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.hero--description p, .hero--description h1{
+    color: #fff;
+}
+
+.hero--description p{
+    display: inline-block;
+}
+
+.hero--description h1{
+    font-size: 1rem;
+    display: inline-block;
+    font-weight: 400;
+}
