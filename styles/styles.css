@@ -7,6 +7,24 @@
     --font-family-primary: 'Quicksand', sans-serif;
     --font-family-secondary: 'Space Grotesk', sans-serif;
     --font-family-tertiary: 'Saira Stencil', sans-serif;
+    --paper: #f5f2e9;
+    --ink: #20241e;
+    --muted: #686b61;
+    --line: #cfcec2;
+    --accent: #d9f36b;
+    --color-white: #fff;
+    --color-hero-overlay: rgba(8, 40, 66, 0.293);
+    --color-circuit-foreground: #294c22;
+    --color-grid-background: #c5d9ef;
+    --color-grid-pattern: #31517625;
+    --color-grid-foreground: #294b73;
+    --color-orbit-background: #edbea0;
+    --color-orbit-pattern: #74391930;
+    --color-orbit-foreground: #743919;
+    --color-rating: #806013;
+    --color-focus: #3863ad;
+    --color-transparent: transparent;
+    --color-current: currentColor;
 }
 
 *{
@@ -106,7 +124,7 @@ header{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(8, 40, 66, 0.293);
+    background-color: var(--color-hero-overlay);
 }
 
 #hero .hero--container{
@@ -123,14 +141,14 @@ header{
 
 #hero .hero--container .hero--welcome p strong{
     font-family: var(--font-family-secondary);
-    color: #fff;
+    color: var(--color-white);
     font-size: 4rem;
 }
 
 
 #hero .hero--container .hero--welcome p strong .hero--welcome-blue{
     color: var(--color-font-contrast);
-    text-shadow: 0px 0px 4px #000;
+    text-shadow: 0px 0px 4px var(--color-font);
 }
 
 .faculty{
@@ -138,14 +156,14 @@ header{
 }
 
 .faculty p{
-    color: #fff;
+    color: var(--color-white);
     font-weight: 200;
     text-align: center;
     
 }
 
 .hero--description{
-    color: #fff;
+    color: var(--color-white);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -153,7 +171,7 @@ header{
 }
 
 .hero--description p, .hero--description h1{
-    color: #fff;
+    color: var(--color-white);
 }
 
 .hero--description p{
@@ -175,11 +193,6 @@ header{
 }
 
 .program-section {
-  --paper: #f5f2e9;
-  --ink: #20241e;
-  --muted: #686b61;
-  --line: #cfcec2;
-  --accent: #d9f36b;
 
   width: 100%;
   padding: 64px max(20px, calc((100% - 1180px) / 2));
@@ -302,12 +315,12 @@ header{
 }
 
 .program-section .artwork-circuit {
-  background-color: #d7ee8a;
+  background-color: var(--accent);
   background-image:
-    linear-gradient(#294c2220 1px, transparent 1px),
-    linear-gradient(90deg, #294c2220 1px, transparent 1px);
+    linear-gradient(var(--ink) 1px, var(--color-transparent) 1px),
+    linear-gradient(90deg, var(--ink) 1px, var(--color-transparent) 1px);
   background-size: 25px 25px;
-  color: #294c22;
+  color: var(--color-circuit-foreground);
 }
 
 .program-section .artwork-circuit .visual-glyph {
@@ -315,24 +328,24 @@ header{
 }
 
 .program-section .artwork-grid {
-  background-color: #c5d9ef;
+  background-color: var(--color-grid-background);
   background-image:
-    linear-gradient(45deg, transparent 48%, #31517625 49%, #31517625 51%, transparent 52%),
-    linear-gradient(-45deg, transparent 48%, #31517625 49%, #31517625 51%, transparent 52%);
+    linear-gradient(45deg, var(--color-transparent) 48%, var(--color-grid-pattern) 49%, var(--color-grid-pattern) 51%, var(--color-transparent) 52%),
+    linear-gradient(-45deg, var(--color-transparent) 48%, var(--color-grid-pattern) 49%, var(--color-grid-pattern) 51%, var(--color-transparent) 52%);
   background-size: 38px 38px;
-  color: #294b73;
+  color: var(--color-grid-foreground);
 }
 
 .program-section .artwork-orbit {
-  background-color: #edbea0;
+  background-color: var(--color-orbit-background);
   background-image: repeating-radial-gradient(
     circle at center,
-    transparent 0,
-    transparent 19px,
-    #74391930 20px,
-    #74391930 21px
+    var(--color-transparent) 0,
+    var(--color-transparent) 19px,
+    var(--color-orbit-pattern) 20px,
+    var(--color-orbit-pattern) 21px
   );
-  color: #743919;
+  color: var(--color-orbit-foreground);
 }
 
 .program-section .artwork-orbit .visual-glyph {
@@ -405,7 +418,7 @@ header{
   height: 14px;
   flex-shrink: 0;
   fill: none;
-  stroke: currentColor;
+  stroke: var(--color-current);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -416,7 +429,7 @@ header{
 }
 
 .program-section .rating > span {
-  color: #806013;
+  color: var(--color-rating);
   font-size: 15px;
 }
 
@@ -467,7 +480,7 @@ header{
   border: 1px solid var(--ink);
   border-radius: 0;
   background: var(--ink);
-  color: #fff;
+  color: var(--color-white);
   font-family: inherit;
   font-size: 12px;
   font-weight: 700;
@@ -481,7 +494,7 @@ header{
 }
 
 .program-section .add-button:focus-visible {
-  outline: 3px solid #3863ad;
+  outline: 3px solid var(--color-focus);
   outline-offset: 4px;
 }
 
