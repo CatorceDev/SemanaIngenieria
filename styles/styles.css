@@ -37,6 +37,7 @@ html, body{
     font-family: 'Quicksand', sans-serif;
     background-color: var(--color-primary);
     height: 200vh;
+    scroll-behavior: smooth;
 }
 
 header{
