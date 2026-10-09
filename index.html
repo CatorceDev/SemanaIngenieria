@@ -34,6 +34,7 @@
                     <button class="cart" type="button" aria-expanded="false" aria-controls="cart-view">
                         <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M223.5-103.5Q200-127 200-160t23.5-56.5Q247-240 280-240t56.5 23.5Q360-193 360-160t-23.5 56.5Q313-80 280-80t-56.5-23.5Zm400 0Q600-127 600-160t23.5-56.5Q647-240 680-240t56.5 23.5Q760-193 760-160t-23.5 56.5Q713-80 680-80t-56.5-23.5ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
                         Mi carrito
+                        <span class="cart-count" id="cart-count" hidden>0</span>
                     </button>
                 </li>
             </ul>
@@ -47,17 +48,32 @@
             <button class="cart-close" type="button" aria-label="Cerrar carrito" data-cart-close>&times;</button>
           </div>
           <div class="cart-content">
-            <div class="cart-empty-art" aria-hidden="true">
-              <svg viewBox="0 0 64 64" fill="none">
-                <path d="M9 13h7l5.5 27h25L53 22H19" />
-                <circle cx="26" cy="49" r="3.5" />
-                <circle cx="45" cy="49" r="3.5" />
-                <path d="M28 29h14M35 22v14" />
-              </svg>
+            <div class="cart-empty-state" id="cart-empty-state">
+              <div class="cart-empty-art" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <path d="M9 13h7l5.5 27h25L53 22H19" />
+                  <circle cx="26" cy="49" r="3.5" />
+                  <circle cx="45" cy="49" r="3.5" />
+                  <path d="M28 29h14M35 22v14" />
+                </svg>
+              </div>
+              <p class="cart-empty-title">Tu próxima idea empieza aquí.</p>
+              <p class="cart-empty-copy">Aún no has agregado entradas. Explora el programa y encuentra tu próxima conferencia.</p>
+              <a class="cart-browse" href="#programa" data-cart-close>Explorar conferencias <span aria-hidden="true">↗</span></a>
             </div>
-            <p class="cart-empty-title">Tu próxima idea empieza aquí.</p>
-            <p class="cart-empty-copy">Aún no has agregado entradas. Explora el programa y encuentra tu próxima conferencia.</p>
-            <a class="cart-browse" href="#programa" data-cart-close>Explorar conferencias <span aria-hidden="true">↗</span></a>
+            <div class="cart-items" id="cart-items" hidden>
+              <ul class="cart-list" id="cart-list" aria-live="polite"></ul>
+              <div class="cart-total">
+                <span>Total</span>
+                <strong id="cart-total">$0.00</strong>
+              </div>
+              <div class="cart-actions">
+                <button class="cart-clear" id="cart-clear" type="button">Vaciar carrito</button>
+                <button class="cart-clear cart-add" id="cart-add" type="button">Continuar con la compra
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
+                </button>
+              </div>
+            </div>
           </div>
           <div class="cart-footer">
             <span>FES ARAGÓN · UNAM</span>
@@ -65,6 +81,26 @@
           </div>
         </div>
     </header>
+    <dialog class="checkout-modal" id="checkout-modal" aria-labelledby="checkout-title">
+      <div class="checkout-modal-header">
+        <div>
+          <span class="cart-eyebrow">SEMANA DE LA INGENIERÍA</span>
+          <h2 id="checkout-title">Elige tu banco</h2>
+        </div>
+        <button class="cart-close" id="checkout-close" type="button" aria-label="Cerrar modal">&times;</button>
+      </div>
+      <div class="checkout-modal-content">
+        <div id="checkout-bank-options">
+          <p class="checkout-description">Selecciona un banco para completar tu compra.</p>
+          <div class="checkout-banks">
+            <button class="checkout-bank" type="button" data-bank="BBVA">BBVA</button>
+            <button class="checkout-bank" type="button" data-bank="Coppel">Coppel</button>
+            <button class="checkout-bank" type="button" data-bank="Scotiabank">Scotiabank</button>
+          </div>
+        </div>
+        <p class="checkout-success" id="checkout-success" role="status" hidden>¡Compra realizada correctamente!</p>
+      </div>
+    </dialog>
     <section id="hero">
         <div class="hero--container">
             <div class="faculty">
@@ -156,6 +192,7 @@
         <button
           type="button"
           class="add-button"
+          data-id="conferencia-ia"
           aria-label="Agregar entrada para Diseñar inteligencia para un mundo real"
         >
           <span class="plus-icon" aria-hidden="true">+</span>
@@ -225,6 +262,7 @@
         <button
           type="button"
           class="add-button"
+          data-id="conferencia-movilidad"
           aria-label="Agregar entrada para La ciudad que se mueve con datos"
         >
           <span class="plus-icon" aria-hidden="true">+</span>
@@ -295,6 +333,7 @@
         <button
           type="button"
           class="add-button"
+          data-id="conferencia-energia"
           aria-label="Agregar entrada para Energía limpia, soluciones cercanas"
         >
           <span class="plus-icon" aria-hidden="true">+</span>
@@ -317,5 +356,6 @@
         
     </footer>
     <script src="/js/script.js" defer></script>
+    <script src="/js/carrito.js" defer></script>
 </body>
 </html>

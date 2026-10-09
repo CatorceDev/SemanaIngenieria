@@ -2,12 +2,14 @@ const cartButton = document.querySelector(".cart");
 const cartPanel = document.querySelector("#cart-view");
 const menuButton = document.querySelector(".header-menu-toggle");
 const headerMenu = document.querySelector("#header-menu");
+const checkoutModal = document.querySelector("#checkout-modal");
 
 if (
   !(cartButton instanceof HTMLButtonElement) ||
   !(cartPanel instanceof HTMLElement) ||
   !(menuButton instanceof HTMLButtonElement) ||
-  !(headerMenu instanceof HTMLElement)
+  !(headerMenu instanceof HTMLElement) ||
+  !(checkoutModal instanceof HTMLDialogElement)
 ) {
   throw new Error("No se encontró el botón o panel del carrito, o el menú del header.");
 }
@@ -64,6 +66,10 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
+    if (checkoutModal.open) {
+      return;
+    }
+
     if (menuButton.getAttribute("aria-expanded") === "true") {
       closeMenu();
       menuButton.focus();
