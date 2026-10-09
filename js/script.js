@@ -80,6 +80,82 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+let ruedaFrame = 0;
+let destinoScroll = window.scrollY;
+document.documentElement.style.scrollBehavior = "auto";
+
+const puedeDesplazarseDentro = (target, deltaY) => {
+  if (!(target instanceof Element)) {
+    return false;
+  }
+
+  for (let elemento = target; elemento && elemento !== document.body; elemento = elemento.parentElement) {
+    const estilo = window.getComputedStyle(elemento);
+    const permiteScroll = /auto|scroll|overlay/.test(estilo.overflowY);
+    const tieneOverflow = elemento.scrollHeight > elemento.clientHeight;
+
+    if (
+      permiteScroll &&
+      tieneOverflow &&
+      (deltaY < 0 ? elemento.scrollTop > 0 : elemento.scrollTop + elemento.clientHeight < elemento.scrollHeight)
+    ) {
+      return true;
+    }
+  }
+
+  return false;
+};
+
+document.addEventListener(
+  "wheel",
+  (event) => {
+    if (
+      event.ctrlKey ||
+      checkoutModal.open ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      puedeDesplazarseDentro(event.target, event.deltaY)
+    ) {
+      return;
+    }
+
+    const multiplicador = event.deltaMode === WheelEvent.DOM_DELTA_LINE
+      ? 16
+      : event.deltaMode === WheelEvent.DOM_DELTA_PAGE
+        ? window.innerHeight
+        : 1;
+    const deltaY = event.deltaY * multiplicador;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    destinoScroll = Math.max(0, Math.min(maxScroll, (ruedaFrame ? destinoScroll : window.scrollY) + deltaY));
+
+    if (destinoScroll === window.scrollY && !ruedaFrame) {
+      return;
+    }
+
+    event.preventDefault();
+
+    if (!ruedaFrame) {
+      const animarScroll = () => {
+        const distancia = destinoScroll - window.scrollY;
+        const siguienteY = Math.abs(distancia) < 0.75
+          ? destinoScroll
+          : window.scrollY + distancia * 0.16;
+
+        window.scrollTo({ top: siguienteY, behavior: "instant" });
+
+        if (siguienteY === destinoScroll) {
+          ruedaFrame = 0;
+          return;
+        }
+
+        ruedaFrame = window.requestAnimationFrame(animarScroll);
+      };
+
+      ruedaFrame = window.requestAnimationFrame(animarScroll);
+    }
+  },
+  { passive: false },
+);
+
 const elementosPorRevelar = document.querySelectorAll(
   "#hero .faculty, #hero .hero--welcome, #hero .hero--description, " +
     ".program-section .section-topline, .program-section .program-heading, " +
