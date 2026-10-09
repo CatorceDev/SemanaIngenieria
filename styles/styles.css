@@ -43,46 +43,52 @@ body {
 
 header {
   background-color: var(--color-primary);
-  height: 13vh;
+  height: clamp(76px, 13vh, 112px);
   position: fixed;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px;
+  padding: 0 clamp(16px, 3vw, 30px);
   z-index: 1000;
 }
 
 .header--logo {
   height: 100%;
+  min-width: 0;
 }
 
 .header--logo a {
   height: 100%;
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
 
 .header--logo a img {
-  height: 100%;
+  display: block;
+  width: auto;
+  height: min(100%, 88px);
+  max-width: 190px;
+  object-fit: contain;
 }
 
-.header--links {
+.header-menu-toggle {
+  display: none;
 }
 
 .header--links ul {
   display: flex;
-  list-style: none;
-  gap: 20px;
   align-items: center;
-}
-
-.header--links ul li {
+  gap: clamp(12px, 2vw, 20px);
+  list-style: none;
+  white-space: nowrap;
 }
 
 .header--links ul li a {
   color: var(--color-font-secondary);
   text-decoration: none;
   font-weight: 400;
+  font-size: clamp(0.875rem, 1.4vw, 1rem);
   position: relative;
   transition:
     color 0.3s ease,
@@ -110,10 +116,16 @@ header {
 }
 
 #hero {
+  position: relative;
+  isolation: isolate;
   height: 100vh;
+  height: 100svh;
+  min-height: 520px;
   width: 100%;
   background-image: url("/assests/images/fes-aragon.jpg");
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -122,18 +134,24 @@ header {
 #hero::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-hero-overlay);
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(8, 40, 66, 0.62),
+    var(--color-hero-overlay) 55%,
+    rgba(8, 40, 66, 0.42)
+  );
 }
 
 #hero .hero--container {
+  position: relative;
+  width: min(600px, calc(100% - 48px));
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
-  width: 600px;
+  padding-top: clamp(30px, 8vh, 80px);
 }
 
 #hero .hero--container .hero--welcome p {
@@ -143,7 +161,8 @@ header {
 #hero .hero--container .hero--welcome p strong {
   font-family: var(--font-family-secondary);
   color: var(--color-white);
-  font-size: 4rem;
+  font-size: clamp(2.2rem, 7.5vw, 4rem);
+  line-height: 1.12;
 }
 
 #hero .hero--container .hero--welcome p strong .hero--welcome-blue {
@@ -167,6 +186,7 @@ header {
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
+  text-align: center;
 }
 
 .hero--description p,
@@ -182,6 +202,60 @@ header {
   font-size: 1rem;
   display: inline-block;
   font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  #hero {
+    min-height: 480px;
+    background-position: 58% center;
+  }
+
+  #hero .hero--container {
+    width: min(600px, calc(100% - 40px));
+    padding-top: 48px;
+  }
+
+  #hero .hero--container .hero--welcome p strong {
+    font-size: clamp(2.25rem, 8vw, 3.5rem);
+  }
+
+  .faculty p {
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+  }
+
+  .hero--description {
+    margin-top: 20px;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero {
+    min-height: 440px;
+    background-position: 62% center;
+  }
+
+  #hero .hero--container {
+    width: calc(100% - 36px);
+    padding-top: 40px;
+  }
+
+  #hero .hero--container .hero--welcome p strong {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+
+  .faculty p {
+    font-size: 0.7rem;
+  }
+
+  .hero--description p {
+    font-size: 0.9rem;
+  }
+
+  .hero--description h1 {
+    font-size: 0.9rem;
+  }
 }
 
 /* Estilos limitados a la sección del programa */
@@ -812,14 +886,129 @@ header {
 }
 
 @media (max-width: 600px) {
-  .cart {
-    margin: 0;
+  header {
+    height: 72px;
+    padding: 0 14px;
+  }
+
+  .header--logo a img {
+    height: 48px;
+    max-width: min(112px, 29vw);
+  }
+
+  .header-menu-toggle {
+    display: flex;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    order: 2;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .header-menu-toggle span {
+    width: 17px;
+    height: 2px;
+    background: var(--ink);
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .header-menu-toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .header-menu-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header-menu-toggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .header-menu-toggle:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  .header--links {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 14px;
+    left: 14px;
     padding: 8px;
-    font-size: 0.85rem;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    box-shadow: 0 14px 32px rgba(32, 36, 30, 0.16);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px);
+    visibility: hidden;
+    transition:
+      opacity 0.18s ease,
+      transform 0.18s ease,
+      visibility 0.18s;
+  }
+
+  .header-menu-toggle[aria-expanded="true"] + .header--links {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .header--links ul {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    white-space: normal;
+  }
+
+  .header--links ul li a {
+    display: block;
+    padding: 12px 10px;
+    font-size: 0.9rem;
+  }
+
+  .header--links ul li + li {
+    border-top: 1px solid var(--line);
+  }
+
+  .cart {
+    width: 100%;
+    margin: 0;
+    justify-content: flex-start;
+    gap: 9px;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .cart-icon {
+    width: 20px;
+    height: 20px;
   }
 
   .cart-view {
     right: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  header {
+    padding: 0 10px;
+  }
+
+  .header--logo a img {
+    max-width: 96px;
   }
 }
 
