@@ -26,11 +26,38 @@
                     </a>
                 </li>
                 <li>
-                    <div class="cart">
+                    <button class="cart" type="button" aria-expanded="false" aria-controls="cart-view">
+                        <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M223.5-103.5Q200-127 200-160t23.5-56.5Q247-240 280-240t56.5 23.5Q360-193 360-160t-23.5 56.5Q313-80 280-80t-56.5-23.5Zm400 0Q600-127 600-160t23.5-56.5Q647-240 680-240t56.5 23.5Q760-193 760-160t-23.5 56.5Q713-80 680-80t-56.5-23.5ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
                         Mi carrito
-                    </div>
+                    </button>
                 </li>
             </ul>
+        </div>
+        <div class="cart-view" id="cart-view" aria-labelledby="cart-title" hidden>
+          <div class="title-cart">
+            <div>
+              <span class="cart-eyebrow">SEMANA DE LA INGENIERÍA</span>
+              <h3 id="cart-title">Tu carrito</h3>
+            </div>
+            <button class="cart-close" type="button" aria-label="Cerrar carrito" data-cart-close>&times;</button>
+          </div>
+          <div class="cart-content">
+            <div class="cart-empty-art" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none">
+                <path d="M9 13h7l5.5 27h25L53 22H19" />
+                <circle cx="26" cy="49" r="3.5" />
+                <circle cx="45" cy="49" r="3.5" />
+                <path d="M28 29h14M35 22v14" />
+              </svg>
+            </div>
+            <p class="cart-empty-title">Tu próxima idea empieza aquí.</p>
+            <p class="cart-empty-copy">Aún no has agregado entradas. Explora el programa y encuentra tu próxima conferencia.</p>
+            <a class="cart-browse" href="#programa" data-cart-close>Explorar conferencias <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="cart-footer">
+            <span>FES ARAGÓN · UNAM</span>
+            <span>01 — 03</span>
+          </div>
         </div>
     </header>
     <section id="hero">
@@ -284,5 +311,6 @@
     <footer>
         
     </footer>
+    <script src="/js/script.js" defer></script>
 </body>
 </html>
