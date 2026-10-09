@@ -79,3 +79,30 @@ document.addEventListener("keydown", (event) => {
     }
   }
 });
+
+const elementosPorRevelar = document.querySelectorAll(
+  "#hero .faculty, #hero .hero--welcome, #hero .hero--description, " +
+    ".program-section .section-topline, .program-section .program-heading, " +
+    ".program-section .talk-card, .program-section .program-footnote",
+);
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries, currentObserver) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          currentObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -32px 0px" },
+  );
+
+  elementosPorRevelar.forEach((element) => {
+    element.classList.add("scroll-reveal");
+    observer.observe(element);
+  });
+} else {
+  elementosPorRevelar.forEach((element) => element.classList.add("is-visible"));
+}

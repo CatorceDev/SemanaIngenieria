@@ -762,6 +762,27 @@ header {
   animation: cart-animation 0.5s ease-in-out;
 }
 
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.program-section .talk-card:nth-child(2) {
+  transition-delay: 100ms;
+}
+
+.program-section .talk-card:nth-child(3) {
+  transition-delay: 200ms;
+}
+
 @keyframes cart-animation {
   0% {
     transform: rotate(0deg);
@@ -1237,5 +1258,11 @@ header {
   .cart-view,
   #cart-add svg.is-animating {
     animation: none;
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
