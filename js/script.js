@@ -30,8 +30,38 @@ menuButton.addEventListener("click", () => {
   menuButton.setAttribute("aria-label", isOpen ? "Abrir menú" : "Cerrar menú");
 });
 
-headerMenu.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener("click", closeMenu);
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", (e) => {
+    const targetId = link.getAttribute("href");
+    if (targetId === "#" || !targetId) return;
+    
+    // Si el botón es para volver arriba (apunta a "#" o a un ID de inicio/top)
+    if (targetId === "#" || targetId === "#top" || targetId === "#inicio") {
+      e.preventDefault();
+      closeMenu();
+      destinoScroll = 0; // Reinicia el control del scroll personalizado
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+      return;
+    }
+
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      e.preventDefault();
+      closeMenu();
+      
+      const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+      destinoScroll = targetPosition;
+      
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth"
+      });
+    }
+  });
 });
 
 cartButton.addEventListener("click", () => {
