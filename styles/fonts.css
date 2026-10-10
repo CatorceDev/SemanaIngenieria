@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "Quicksand";
+    src: url("/assests/fonts/Quicksand/Quicksand-VariableFont_wght.ttf") format("truetype");
+    font-weight: 100 900;
+}
+
+@font-face {
+    font-family: "Saira Stencil";
+    src: url("/assests/fonts/Saira_Stencil/SairaStencil-VariableFont_wdth\,wght.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 100 900;
+}
+
+@font-face {
+    font-family: "Saira Stencil";
+    src: url("/assests/fonts/Saira_Stencil/SairaStencil-Italic-VariableFont_wdth\,wght.ttf") format("truetype");
+    font-style: italic;
+    font-weight: 100 900;
+}
+
+@font-face {
+    font-family: "Space Grotesk";
+    src: url("/assests/fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf") format("truetype");
+    font-weight: 100 900;
+}
