@@ -82,7 +82,6 @@ document.addEventListener("keydown", (event) => {
 
 let ruedaFrame = 0;
 let destinoScroll = window.scrollY;
-document.documentElement.style.scrollBehavior = "auto";
 
 const puedeDesplazarseDentro = (target, deltaY) => {
   if (!(target instanceof Element)) {
@@ -105,6 +104,23 @@ const puedeDesplazarseDentro = (target, deltaY) => {
 
   return false;
 };
+
+document.addEventListener(
+  "click",
+  (event) => {
+    if (!(event.target instanceof Element) || !event.target.closest('a[href^="#"]')) {
+      return;
+    }
+
+    if (ruedaFrame) {
+      window.cancelAnimationFrame(ruedaFrame);
+      ruedaFrame = 0;
+    }
+
+    destinoScroll = window.scrollY;
+  },
+  true,
+);
 
 document.addEventListener(
   "wheel",
@@ -155,6 +171,82 @@ document.addEventListener(
   },
   { passive: false },
 );
+
+if (
+  window.matchMedia("(hover: hover)").matches &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+  document.querySelectorAll(".talk-art[data-image-gallery]").forEach((gallery) => {
+    const article = gallery.closest(".talk-card");
+    const images = gallery.querySelectorAll("img");
+    const imageFolder = gallery.getAttribute("data-image-gallery");
+    const imageCount = Number(gallery.getAttribute("data-image-count"));
+
+    if (
+      !(article instanceof HTMLElement) ||
+      images.length !== 2 ||
+      !(images[0] instanceof HTMLImageElement) ||
+      !(images[1] instanceof HTMLImageElement) ||
+      !imageFolder ||
+      !Number.isInteger(imageCount) ||
+      imageCount < 2
+    ) {
+      throw new Error("La galería de imágenes de una conferencia tiene una configuración inválida.");
+    }
+
+    let imageNumber = 1;
+    let activeImageIndex = 0;
+    let rotationTimer = 0;
+    let isLoading = false;
+    let hoverSession = 0;
+
+    const stopRotation = () => {
+      if (rotationTimer) {
+        window.clearInterval(rotationTimer);
+        rotationTimer = 0;
+      }
+
+      hoverSession += 1;
+    };
+
+    article.addEventListener("pointerenter", (event) => {
+      if (event.pointerType !== "mouse" || rotationTimer) {
+        return;
+      }
+
+      const session = ++hoverSession;
+      rotationTimer = window.setInterval(async () => {
+        if (isLoading) {
+          return;
+        }
+
+        isLoading = true;
+        const nextNumber = (imageNumber % imageCount) + 1;
+        const incomingImage = images[1 - activeImageIndex];
+        incomingImage.src = `${imageFolder}img${nextNumber}.jpeg`;
+
+        try {
+          await incomingImage.decode();
+
+          if (session !== hoverSession) {
+            return;
+          }
+
+          incomingImage.classList.add("is-active");
+          images[activeImageIndex].classList.remove("is-active");
+          activeImageIndex = 1 - activeImageIndex;
+          imageNumber = nextNumber;
+        } catch (error) {
+          console.error(`No se pudo cargar la imagen de conferencia: ${incomingImage.src}`, error);
+        } finally {
+          isLoading = false;
+        }
+      }, 2000);
+    });
+
+    article.addEventListener("pointerleave", stopRotation);
+  });
+}
 
 const elementosPorRevelar = document.querySelectorAll(
   "#hero .faculty, #hero .hero--welcome, #hero .hero--description, " +

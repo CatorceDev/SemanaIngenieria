@@ -1,361 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semana de la Ingeniería | FES Aragón</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana de la Ingeniería | FES Aragón</title>
 
-    <!--TODO: Add CSS link-->
-    <link rel="stylesheet" href="/styles/styles.css">
+  <!--TODO: Add CSS link-->
+  <link rel="stylesheet" href="/styles/styles.css">
 
-    <!--TODO: Add font links-->
-    <link rel="stylesheet" href="/styles/fonts.css">
+  <!--TODO: Add font links-->
+  <link rel="stylesheet" href="/styles/fonts.css">
 </head>
+
 <body>
-    <header>
-        <div class="header--logo">
-            <a href="#hero">
-                <img src="/assests/images/fes-logo.png" alt="FES Aragón">
-            </a>
-        </div>
-        <button class="header-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="header-menu">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </button>
-        <div class="header--links" id="header-menu">
-            <ul>
-                <li>
-                    <a href="#programa">
-                        Programa
-                    </a>
-                </li>
-                <li>
-                    <button class="cart" type="button" aria-expanded="false" aria-controls="cart-view">
-                        <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M223.5-103.5Q200-127 200-160t23.5-56.5Q247-240 280-240t56.5 23.5Q360-193 360-160t-23.5 56.5Q313-80 280-80t-56.5-23.5Zm400 0Q600-127 600-160t23.5-56.5Q647-240 680-240t56.5 23.5Q760-193 760-160t-23.5 56.5Q713-80 680-80t-56.5-23.5ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
-                        Mi carrito
-                        <span class="cart-count" id="cart-count" hidden>0</span>
-                    </button>
-                </li>
-            </ul>
-        </div>
-        <div class="cart-view" id="cart-view" aria-labelledby="cart-title" hidden>
-          <div class="title-cart">
-            <div>
-              <span class="cart-eyebrow">SEMANA DE LA INGENIERÍA</span>
-              <h3 id="cart-title">Tu carrito</h3>
-            </div>
-            <button class="cart-close" type="button" aria-label="Cerrar carrito" data-cart-close>&times;</button>
-          </div>
-          <div class="cart-content">
-            <div class="cart-empty-state" id="cart-empty-state">
-              <div class="cart-empty-art" aria-hidden="true">
-                <svg viewBox="0 0 64 64" fill="none">
-                  <path d="M9 13h7l5.5 27h25L53 22H19" />
-                  <circle cx="26" cy="49" r="3.5" />
-                  <circle cx="45" cy="49" r="3.5" />
-                  <path d="M28 29h14M35 22v14" />
-                </svg>
-              </div>
-              <p class="cart-empty-title">Tu próxima idea empieza aquí.</p>
-              <p class="cart-empty-copy">Aún no has agregado entradas. Explora el programa y encuentra tu próxima conferencia.</p>
-              <a class="cart-browse" href="#programa" data-cart-close>Explorar conferencias <span aria-hidden="true">↗</span></a>
-            </div>
-            <div class="cart-items" id="cart-items" hidden>
-              <ul class="cart-list" id="cart-list" aria-live="polite"></ul>
-              <div class="cart-total">
-                <span>Total</span>
-                <strong id="cart-total">$0.00</strong>
-              </div>
-              <div class="cart-actions">
-                <button class="cart-clear" id="cart-clear" type="button">Vaciar carrito</button>
-                <button class="cart-clear cart-add" id="cart-add" type="button">Continuar con la compra
-                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="cart-footer">
-            <span>FES ARAGÓN · UNAM</span>
-            <span>01 — 03</span>
-          </div>
-        </div>
-    </header>
-    <dialog class="checkout-modal" id="checkout-modal" aria-labelledby="checkout-title">
-      <div class="checkout-modal-header">
+  <header>
+    <div class="header--logo">
+      <a href="#hero">
+        <img src="/assests/images/fes-logo.png" alt="FES Aragón">
+      </a>
+    </div>
+    <button class="header-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"
+      aria-controls="header-menu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+    <div class="header--links" id="header-menu">
+      <ul>
+        <li>
+          <a href="#programa">
+            Programa
+          </a>
+        </li>
+        <li>
+          <button class="cart" type="button" aria-expanded="false" aria-controls="cart-view">
+            <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+              width="24px" fill="currentColor">
+              <path
+                d="M223.5-103.5Q200-127 200-160t23.5-56.5Q247-240 280-240t56.5 23.5Q360-193 360-160t-23.5 56.5Q313-80 280-80t-56.5-23.5Zm400 0Q600-127 600-160t23.5-56.5Q647-240 680-240t56.5 23.5Q760-193 760-160t-23.5 56.5Q713-80 680-80t-56.5-23.5ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z" />
+            </svg>
+            Mi carrito
+            <span class="cart-count" id="cart-count" hidden>0</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="cart-view" id="cart-view" aria-labelledby="cart-title" hidden>
+      <div class="title-cart">
         <div>
           <span class="cart-eyebrow">SEMANA DE LA INGENIERÍA</span>
-          <h2 id="checkout-title">Elige tu banco</h2>
+          <h3 id="cart-title">Tu carrito</h3>
         </div>
-        <button class="cart-close" id="checkout-close" type="button" aria-label="Cerrar modal">&times;</button>
+        <button class="cart-close" type="button" aria-label="Cerrar carrito" data-cart-close>&times;</button>
       </div>
-      <div class="checkout-modal-content">
-        <div id="checkout-bank-options">
-          <p class="checkout-description">Selecciona un banco para completar tu compra.</p>
-          <div class="checkout-banks">
-            <button class="checkout-bank" type="button" data-bank="BBVA">BBVA</button>
-            <button class="checkout-bank" type="button" data-bank="Coppel">Coppel</button>
-            <button class="checkout-bank" type="button" data-bank="Scotiabank">Scotiabank</button>
+      <div class="cart-content">
+        <div class="cart-empty-state" id="cart-empty-state">
+          <div class="cart-empty-art" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none">
+              <path d="M9 13h7l5.5 27h25L53 22H19" />
+              <circle cx="26" cy="49" r="3.5" />
+              <circle cx="45" cy="49" r="3.5" />
+              <path d="M28 29h14M35 22v14" />
+            </svg>
+          </div>
+          <p class="cart-empty-title">Tu próxima idea empieza aquí.</p>
+          <p class="cart-empty-copy">Aún no has agregado entradas. Explora el programa y encuentra tu próxima
+            conferencia.</p>
+          <a class="cart-browse" href="#programa" data-cart-close>Explorar conferencias <span
+              aria-hidden="true">↗</span></a>
+        </div>
+        <div class="cart-items" id="cart-items" hidden>
+          <ul class="cart-list" id="cart-list" aria-live="polite"></ul>
+          <div class="cart-total">
+            <span>Total</span>
+            <strong id="cart-total">$0.00</strong>
+          </div>
+          <div class="cart-actions">
+            <button class="cart-clear" id="cart-clear" type="button">Vaciar carrito</button>
+            <button class="cart-clear cart-add" id="cart-add" type="button">Continuar con la compra
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill="currentColor">
+                <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+              </svg>
+            </button>
           </div>
         </div>
-        <p class="checkout-success" id="checkout-success" role="status" hidden>¡Compra realizada correctamente!</p>
       </div>
-    </dialog>
-    <section id="hero">
-        <div class="hero--container">
-            <div class="faculty">
-                <p>──  FES ARAGÓN · UNAM  ──</p>
-            </div>
-            <div class="hero--welcome">
-                <p><strong>¡Bienvenidas y <span class="hero--welcome-blue">Bienvenidos!</span></strong></p>
-            </div>
-            <div class="hero--description">
-                <div>
-                    <p>Te damos la bienvenida a</p>
-                    <h1>La Semana de la Ingeniería de FES Aragón</h1>
-                </div>
-                <p>: ideas, tecnología y comunidad para imaginar el futuro</p>
-            </div>
-        </div>
-    </section>
-    <section class="program-section" id="programa">
-  <div class="section-topline">
-    <span>02 / PROGRAMA</span>
-    <span>3 CONFERENCIAS · DATOS DE MUESTRA</span>
-  </div>
-
-  <div class="program-heading">
-    <h2>Encuentra tu<br><em>próxima idea.</em></h2>
-    <p>
-      Conferencias para mirar distinto.<br>
-      Entradas desde <b>$70 MXN</b>.
-    </p>
-  </div>
-  <div class="talk-list">
-    <!-- Conferencia 1 -->
-    <article class="talk-card">
-      <div class="talk-art artwork-circuit" aria-hidden="true">
-        <span class="visual-label">FESA · LAB 01</span>
-        <span class="visual-glyph">∿</span>
-        <span class="visual-number">01</span>
-        <span class="visual-coordinate">ENGINEERING / 2025</span>
+      <div class="cart-footer">
+        <span>FES ARAGÓN · UNAM</span>
+        <span>01 — 03</span>
       </div>
-
-      <div class="talk-info">
-        <div class="talk-meta">
-          <span class="category">INTELIGENCIA ARTIFICIAL</span>
-          <span class="talk-date">LUN · 21 OCT</span>
-        </div>
-
-        <h3>Diseñar inteligencia para un mundo real</h3>
-
-        <p class="speaker">
-          Dra. Elena Vázquez · Laboratorio de IA, UNAM
-        </p>
-
-        <p class="talk-description">
-          De los modelos generativos a los sistemas que resuelven problemas
-          en nuestras ciudades. Una conversación sobre construir tecnología
-          útil, responsable y hecha desde México.
-        </p>
-
-        <div class="talk-facts">
-          <span>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M12 6v6h4"></path>
-            </svg>
-            10:00 AM
-          </span>
-
-          <span>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-            Auditorio A-9
-          </span>
-
-          <span class="rating" aria-label="Calificación: 4.9 de 5">
-            <span aria-hidden="true">★</span> 4.9
-          </span>
+    </div>
+  </header>
+  <dialog class="checkout-modal" id="checkout-modal" aria-labelledby="checkout-title">
+    <div class="checkout-modal-header">
+      <div>
+        <span class="cart-eyebrow">SEMANA DE LA INGENIERÍA</span>
+        <h2 id="checkout-title">Elige tu banco</h2>
+      </div>
+      <button class="cart-close" id="checkout-close" type="button" aria-label="Cerrar modal">&times;</button>
+    </div>
+    <div class="checkout-modal-content">
+      <div id="checkout-bank-options">
+        <p class="checkout-description">Selecciona un banco para completar tu compra.</p>
+        <div class="checkout-banks">
+          <button class="checkout-bank" type="button" data-bank="BBVA">BBVA</button>
+          <button class="checkout-bank" type="button" data-bank="Coppel">Coppel</button>
+          <button class="checkout-bank" type="button" data-bank="Scotiabank">Scotiabank</button>
         </div>
       </div>
-
-      <div class="talk-buy">
+      <p class="checkout-success" id="checkout-success" role="status" hidden>¡Compra realizada correctamente!</p>
+    </div>
+  </dialog>
+  <section id="hero">
+    <div class="hero--container">
+      <div class="faculty">
+        <p>── FES ARAGÓN · UNAM ──</p>
+      </div>
+      <div class="hero--welcome">
+        <p><strong>¡Bienvenidas y <span class="hero--welcome-blue">Bienvenidos!</span></strong></p>
+      </div>
+      <div class="hero--description">
         <div>
-          <span class="price-label">ENTRADA</span>
-          <strong>$85</strong>
-          <span class="price-sub">MXN / persona</span>
+          <p>Te damos la bienvenida a</p>
+          <h1>La Semana de la Ingeniería de FES Aragón</h1>
+        </div>
+        <p>: ideas, tecnología y comunidad para imaginar el futuro</p>
+      </div>
+    </div>
+  </section>
+  <section class="program-section" id="programa">
+    <div class="section-topline">
+      <span>02 / PROGRAMA</span>
+      <span>3 CONFERENCIAS · DATOS DE MUESTRA</span>
+    </div>
+
+    <div class="program-heading">
+      <h2>Encuentra tu<br><em>próxima idea.</em></h2>
+      <p>
+        Conferencias para mirar distinto.<br>
+        Entradas desde <b>$70 MXN</b>.
+      </p>
+    </div>
+    <div class="talk-list">
+      <!-- Conferencia 1 -->
+      <article class="talk-card">
+        <div class="talk-art" data-image-gallery="/assests/images/Conferencia1/" data-image-count="9">
+          <img class="is-active" src="/assests/images/Conferencia1/img1.jpeg"
+            alt="Imagen de la conferencia de inteligencia artificial">
+          <img class="talk-art-next" alt="" aria-hidden="true">
         </div>
 
-        <button
-          type="button"
-          class="add-button"
-          data-id="conferencia-ia"
-          aria-label="Agregar entrada para Diseñar inteligencia para un mundo real"
-        >
-          <span class="plus-icon" aria-hidden="true">+</span>
-          <span>Agregar</span>
-        </button>
-      </div>
+        <div class="talk-info">
+          <div class="talk-meta">
+            <span class="category">Ingenieria Civil</span>
+            <span class="talk-date">MIE · 23 SEP</span>
+          </div>
 
-      <div class="talk-index" aria-hidden="true">01</div>
-    </article>
+          <h3>Aragón Inteligente</h3>
 
-    <!-- Conferencia 2 -->
-    <article class="talk-card">
-      <div class="talk-art artwork-grid" aria-hidden="true">
-        <span class="visual-label">FESA · LAB 02</span>
-        <span class="visual-glyph">⌖</span>
-        <span class="visual-number">02</span>
-        <span class="visual-coordinate">ENGINEERING / 2025</span>
-      </div>
+          <p class="speaker">
+            Ing. Juan Carlos Ortiz León
+          </p>
 
-      <div class="talk-info">
-        <div class="talk-meta">
-          <span class="category">CIUDAD Y MOVILIDAD</span>
-          <span class="talk-date">MAR · 22 OCT</span>
+          <p class="talk-description">
+            Conoce los avances del proyecto Aragón Inteligente, que desarrolla un gemelo digital de las instalaciones de la FES Aragón. La sesión abordará su proceso de implementación, los principales retos técnicos y las oportunidades que ofrece para la gestión y el análisis del campus.
+          </p>
+
+          <div class="talk-facts">
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6h4"></path>
+              </svg>
+              10:00 AM
+            </span>
+
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Auditorio Jose Vasconcelos
+            </span>
+
+            <span class="rating" aria-label="Calificación: 4.9 de 5">
+              <span aria-hidden="true">★</span> 4.9
+            </span>
+          </div>
         </div>
 
-        <h3>La ciudad que se mueve con datos</h3>
+        <div class="talk-buy">
+          <div>
+            <span class="price-label">ENTRADA</span>
+            <strong>$85</strong>
+            <span class="price-sub">MXN / persona</span>
+          </div>
 
-        <p class="speaker">
-          Mtro. Iván Rojas · Centro de Ingeniería Avanzada
-        </p>
-
-        <p class="talk-description">
-          Sensores, movilidad y espacio público: cómo traducir datos cotidianos
-          en decisiones urbanas que hagan la vida más fácil para todos.
-        </p>
-
-        <div class="talk-facts">
-          <span>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M12 6v6h4"></path>
-            </svg>
-            12:30 PM
-          </span>
-
-          <span>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-            Sala de Congresos
-          </span>
-
-          <span class="rating" aria-label="Calificación: 4.8 de 5">
-            <span aria-hidden="true">★</span> 4.8
-          </span>
-        </div>
-      </div>
-
-      <div class="talk-buy">
-        <div>
-          <span class="price-label">ENTRADA</span>
-          <strong>$70</strong>
-          <span class="price-sub">MXN / persona</span>
+          <button type="button" class="add-button" data-id="conferencia-ia"
+            aria-label="Agregar entrada para Diseñar inteligencia para un mundo real">
+            <span class="plus-icon" aria-hidden="true">+</span>
+            <span>Agregar</span>
+          </button>
         </div>
 
-        <button
-          type="button"
-          class="add-button"
-          data-id="conferencia-movilidad"
-          aria-label="Agregar entrada para La ciudad que se mueve con datos"
-        >
-          <span class="plus-icon" aria-hidden="true">+</span>
-          <span>Agregar</span>
-        </button>
-      </div>
+        <div class="talk-index" aria-hidden="true">01</div>
+      </article>
 
-      <div class="talk-index" aria-hidden="true">02</div>
-    </article>
-
-    <!-- Conferencia 3 -->
-    <article class="talk-card">
-      <div class="talk-art artwork-orbit" aria-hidden="true">
-        <span class="visual-label">FESA · LAB 03</span>
-        <span class="visual-glyph">◉</span>
-        <span class="visual-number">03</span>
-        <span class="visual-coordinate">ENGINEERING / 2025</span>
-      </div>
-
-      <div class="talk-info">
-        <div class="talk-meta">
-          <span class="category">ENERGÍA Y SOSTENIBILIDAD</span>
-          <span class="talk-date">JUE · 24 OCT</span>
+      <!-- Conferencia 2 -->
+      <article class="talk-card">
+        <div class="talk-art" data-image-gallery="/assests/images/Conferencia2/" data-image-count="4">
+          <img class="is-active" src="/assests/images/Conferencia2/img1.jpeg"
+            alt="Imagen de la conferencia sobre ciudad y movilidad">
+          <img class="talk-art-next" alt="" aria-hidden="true">
         </div>
 
-        <h3>Energía limpia, soluciones cercanas</h3>
+        <div class="talk-info">
+          <div class="talk-meta">
+            <span class="category">Ingeniería Eléctrica Electrónica</span>
+            <span class="talk-date">MIE · 23 SEP</span>
+          </div>
 
-        <p class="speaker">
-          Ing. Marisol Peña · Red Mexicana de Energía
-        </p>
+          <h3>Origen y Desarrollo del Sistema Eléctrico Nacional: de Porfirio Díaz a AMLO</h3>
 
-        <p class="talk-description">
-          Una mirada práctica a las microredes y el almacenamiento que ya
-          están cambiando la forma en que las comunidades producen su propia
-          energía.
-        </p>
+          <p class="speaker">
+            Ing. Marco Antonio Calderón
+          </p>
 
-        <div class="talk-facts">
-          <span>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M12 6v6h4"></path>
-            </svg>
-            4:00 PM
-          </span>
+          <p class="talk-description">
+            Un recorrido por la evolución del Sistema Eléctrico Nacional, desde sus orígenes hasta la época contemporánea. A partir de referencias bibliográficas y cinematográficas, se analizarán los principales cambios que han definido su desarrollo en México.
+          </p>
 
-          <span>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-            Auditorio A-9
-          </span>
+          <div class="talk-facts">
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6h4"></path>
+              </svg>
+              11:00 AM
+            </span>
 
-          <span class="rating" aria-label="Calificación: 4.9 de 5">
-            <span aria-hidden="true">★</span> 4.9
-          </span>
-        </div>
-      </div>
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Auditorio Jose Vasconcelos
+            </span>
 
-      <div class="talk-buy">
-        <div>
-          <span class="price-label">ENTRADA</span>
-          <strong>$95</strong>
-          <span class="price-sub">MXN / persona</span>
+            <span class="rating" aria-label="Calificación: 4.8 de 5">
+              <span aria-hidden="true">★</span> 4.8
+            </span>
+          </div>
         </div>
 
-        <button
-          type="button"
-          class="add-button"
-          data-id="conferencia-energia"
-          aria-label="Agregar entrada para Energía limpia, soluciones cercanas"
-        >
-          <span class="plus-icon" aria-hidden="true">+</span>
-          <span>Agregar</span>
-        </button>
+        <div class="talk-buy">
+          <div>
+            <span class="price-label">ENTRADA</span>
+            <strong>$70</strong>
+            <span class="price-sub">MXN / persona</span>
+          </div>
+
+          <button type="button" class="add-button" data-id="conferencia-movilidad"
+            aria-label="Agregar entrada para La ciudad que se mueve con datos">
+            <span class="plus-icon" aria-hidden="true">+</span>
+            <span>Agregar</span>
+          </button>
+        </div>
+
+        <div class="talk-index" aria-hidden="true">02</div>
+      </article>
+
+      <!-- Conferencia 3 -->
+      <article class="talk-card">
+        <div class="talk-art" data-image-gallery="/assests/images/Conferencia3/" data-image-count="5">
+          <img class="is-active" src="/assests/images/Conferencia3/img1.jpeg"
+            alt="Imagen de la conferencia sobre energía y sostenibilidad">
+          <img class="talk-art-next" alt="" aria-hidden="true">
+        </div>
+
+        <div class="talk-info">
+          <div class="talk-meta">
+            <span class="category">Ingeniería Industrial</span>
+            <span class="talk-date">JUE · 24 SEP</span>
+          </div>
+
+          <h3>Lean + Six Sigma</h3>
+
+          <p class="talk-description">
+            Descubre cómo Lean y Six Sigma se complementan para optimizar procesos, reducir desperdicios y controlar la variabilidad. La conferencia presentará los principios de estas metodologías y su aplicación para impulsar mejoras medibles en la calidad y la eficiencia operativa.
+          </p>
+
+          <div class="talk-facts">
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6h4"></path>
+              </svg>
+              9:00 AM
+            </span>
+
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Auditorio A-9
+            </span>
+
+            <span class="rating" aria-label="Calificación: 4.9 de 5">
+              <span aria-hidden="true">★</span> 4.9
+            </span>
+          </div>
+        </div>
+
+        <div class="talk-buy">
+          <div>
+            <span class="price-label">ENTRADA</span>
+            <strong>$95</strong>
+            <span class="price-sub">MXN / persona</span>
+          </div>
+
+          <button type="button" class="add-button" data-id="conferencia-energia"
+            aria-label="Agregar entrada para Energía limpia, soluciones cercanas">
+            <span class="plus-icon" aria-hidden="true">+</span>
+            <span>Agregar</span>
+          </button>
+        </div>
+
+        <div class="talk-index" aria-hidden="true">03</div>
+      </article>
+    </div>
+
+    <div class="program-footnote">
+      <span>ELIGE UNA O TODAS.</span>
+      <span>APRENDE SIN LÍMITES.</span>
+      <span>HECHO EN ARAGÓN.</span>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <a class="footer__brand" href="#hero" aria-label="Semana de la Ingeniería, volver al inicio">
+          <img src="/assests/images/fes-logo.png" alt="FES Aragón, UNAM">
+        </a>
+        <span class="footer__edition">FES ARAGÓN · UNAM <span> / </span> 01—03</span>
       </div>
-
-      <div class="talk-index" aria-hidden="true">03</div>
-    </article>
-  </div>
-
-  <div class="program-footnote">
-    <span>ELIGE UNA O TODAS.</span>
-    <span>APRENDE SIN LÍMITES.</span>
-    <span>HECHO EN ARAGÓN.</span>
-  </div>
-</section>
-    
-    <footer>
-        
-    </footer>
-    <script src="/js/script.js" defer></script>
-    <script src="/js/carrito.js" defer></script>
+      <div class="footer__main">
+        <div class="footer__message">
+          <p class="footer__eyebrow">UNA SEMANA, MUCHAS FORMAS DE PENSAR.</p>
+          <h2>Nos vemos<br>en <em>el auditorio.</em></h2>
+        </div>
+        <nav class="footer__nav" aria-label="Navegación del pie de página">
+          <a href="#programa">Explorar el programa <span aria-hidden="true">↗</span></a>
+          <a href="#hero">Volver al inicio <span aria-hidden="true">↑</span></a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__team">
+          <div class="footer--integrants">
+            <h3>Equipo 4</h3>
+            <ul>
+              <li>Angel Hernandez</li>
+              <li>Luis Carrillo</li>
+              <li>Mauricio Maldonado</li>
+            </ul>
+          </div>
+          <div class="footer__bottom-brand">
+            <img src="/assests/images/fes-logo.png" alt="FES Aragón, UNAM">
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="/js/script.js" defer></script>
+  <script src="/js/carrito.js" defer></script>
 </body>
+
 </html>
